@@ -82,7 +82,9 @@ func (Room) Init(cmd *cobra.Command) error {
 		return err
 	}
 
-	cmd.PersistentFlags().StringSlice("neko_privileged_images", []string{}, "Whitelist of images allowed to be executed with Privileged mode")
+	cmd.PersistentFlags().StringSlice("neko_privileged_images", []string{
+		"m1k1o/neko:nvidia-google-chrome",
+	}, "Whitelist of images allowed to be executed with Privileged mode")
 	if err := viper.BindPFlag("neko_privileged_images", cmd.PersistentFlags().Lookup("neko_privileged_images")); err != nil {
 		return err
 	}
@@ -124,7 +126,9 @@ func (Room) Init(cmd *cobra.Command) error {
 		return err
 	}
 
-	cmd.PersistentFlags().StringSlice("mounts.whitelist", []string{}, "whitelisted public mounts for containers")
+	cmd.PersistentFlags().StringSlice("mounts.whitelist", []string{
+		"/usr/lib64/xorg",
+	}, "whitelisted public mounts for containers")
 	if err := viper.BindPFlag("mounts.whitelist", cmd.PersistentFlags().Lookup("mounts.whitelist")); err != nil {
 		return err
 	}
