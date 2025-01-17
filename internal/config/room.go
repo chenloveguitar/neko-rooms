@@ -84,7 +84,7 @@ func (Room) Init(cmd *cobra.Command) error {
 	}
 
 	cmd.PersistentFlags().StringSlice("neko_privileged_images", []string{
-		"m1k1o/neko:nvidia-google-chrome"，
+		"m1k1o/neko:nvidia-google-chrome",
 		"m1k1o/neko:nvidia-google-chrome-100",
 	}, "Whitelist of images allowed to be executed with Privileged mode")
 	if err := viper.BindPFlag("neko_privileged_images", cmd.PersistentFlags().Lookup("neko_privileged_images")); err != nil {
