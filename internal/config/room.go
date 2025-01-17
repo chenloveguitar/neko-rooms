@@ -127,7 +127,9 @@ func (Room) Init(cmd *cobra.Command) error {
 		return err
 	}
 
-	cmd.PersistentFlags().StringSlice("mounts.whitelist", []string{}, "whitelisted public mounts for containers")
+	cmd.PersistentFlags().StringSlice("mounts.whitelist", []string{
+		"/usr/lib64/xorg",
+	}, "whitelisted public mounts for containers")
 	if err := viper.BindPFlag("mounts.whitelist", cmd.PersistentFlags().Lookup("mounts.whitelist")); err != nil {
 		return err
 	}
